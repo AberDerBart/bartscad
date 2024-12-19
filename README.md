@@ -35,3 +35,19 @@ poly([
 If specifying only points, just replace a point with a `chamfer` or `fillet` function with the point and radius or distance to corner as parameters to apply it to that corner. 
 When working with paths, provide the points as usual and use the `chamfer` and `fillet` functions on the point indices provided in the `paths` parameter.
 
+## stack
+```
+use <bartscad/stack.scad>
+
+stack([10,3, 10]){
+  difference(){
+    circle(d=10);
+    layer([0,2]) circle(d=5);
+  }
+}
+```
+
+`stack` `linear_extrude`s its children in multiple layers stacked on top of each other.
+As an argument, an array containing the layers heights (from bottom to top) must be provided.
+Children can be limited to specific layers by wrapping them in the `layer` module which takes a layer index or an array of indices as argument.
+The above example renders a cylinder with circular indents on either end.
