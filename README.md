@@ -39,15 +39,16 @@ When working with paths, provide the points as usual and use the `chamfer` and `
 ```
 use <bartscad/stack.scad>
 
-stack([10,3, 10]){
+stack([10,["center", 3], ["top", 10]]){
   difference(){
     circle(d=10);
-    layer([0,2]) circle(d=5);
+    layer([0,"top"]) circle(d=5);
   }
 }
 ```
 
 `stack` `linear_extrude`s its children in multiple layers stacked on top of each other.
-As an argument, an array containing the layers heights (from bottom to top) must be provided.
-Children can be limited to specific layers by wrapping them in the `layer` module which takes a layer index or an array of indices as argument.
+As an argument, an array containing the layers (from bottom to top) must be provided.
+Layers are specified as `<height>` or `[<label>, <height>]`.
+Children can be limited to specific layers by wrapping them in the `layer` module which takes a layer index, a layer label or an array of indices and or labels as argument.
 The above example renders a cylinder with circular indents on either end.
