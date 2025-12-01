@@ -16,17 +16,17 @@ module yxz(){
 
 module yzx(){
   multmatrix([
-    [0,1,0,0],
     [0,0,1,0],
     [1,0,0,0],
+    [0,1,0,0],
   ]) children();
 }
 
 module zxy(){
   multmatrix([
+    [0,1,0,0],
     [0,0,1,0],
     [1,0,0,0],
-    [0,1,0,0],
   ]) children();
 }
 
